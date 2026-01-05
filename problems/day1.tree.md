@@ -24,7 +24,28 @@ if the curr is None, means the recursion should stop.
 
 
 ```
+### iteration
+we use stack to emulate the resurrsion, 
+1. push the node(root) to the stack
+2. pop it and add the value to the res arr
+3. push the node right and then node left, becasue later the stack will pop the left node first 
+```python
+def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        if root == None:
+            return []
+        stack = [root]
+        res = []
+        while stack:
+            node = stack.pop()
+            res.append(node.val)
 
+            if node.right:
+                stack.append(node.right)
+            if node.left:
+                stack.append(node.left)
+        return res
+
+```
 # 145. Binary Tree Postorder Traversal
 
 ```python
@@ -41,7 +62,25 @@ if the curr is None, means the recursion should stop.
 
 ```
 
+### iteration -- two stacks
+```python
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        if root == None:
+            return []
+        s1=[root]
+        s2 = []
+        while s1:
+            node = s1.pop()
+            s2.append(node)
+            if node.left:
+                s1.append(node.left)
+            if node.right:
+                s1.append(node.right)
+            
+            
+        return [node.val for node in reversed(s2)]
 
+```
 # 94. Binary Tree Inorder Traversal
 
 ```python
