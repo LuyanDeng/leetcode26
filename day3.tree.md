@@ -133,3 +133,22 @@ class Solution:
         return depth
 
 ```
+
+# 559. Maximum Depth of N-ary Tree
+```python
+class Solution:
+    def maxDepth(self, root: 'Node') -> int:
+        
+        if not root:
+            return 0
+            # if has node, the current depth is 1
+        max_depth = 1
+            # children depth set to 0 
+        max_children_depth =0
+            # iterate each child's depth
+        for child in root.children:
+            child_depth = self.maxDepth(child)
+            if child_depth >max_children_depth:
+                max_children_depth = child_depth
+        return 1+max_children_depth
+```
