@@ -152,3 +152,23 @@ class Solution:
                 max_children_depth = child_depth
         return 1+max_children_depth
 ```
+```python
+class Solution:
+    def maxDepth(self, root: 'Node') -> int:
+        
+        if not root:
+            return 0
+            # if has node, the current depth is 1
+        max_depth =0
+        q = collections.deque()
+        q.append(root)
+        while q:
+            max_depth +=1
+            j = len(q)
+           
+            for i in range(j):
+                node = q.popleft()
+                for child in node.children:
+                    q.append(child)
+        return max_depth
+```
